@@ -7,7 +7,7 @@ class ImgurService
     end
     json = JSON.parse(@resp.body)
     json["data"]["cover"] = json["data"]["id"]
-    json["data"]["upvotes"] = Image.find_by(imgur_id: json["data"]["id"]).upvotes
+    json["data"]["upvotes"] = Image.find_by(imgur_id: id).upvotes
     return json["data"]
   end
 
