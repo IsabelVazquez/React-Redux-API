@@ -3,9 +3,7 @@ class Api::V1::SessionsController < ApplicationController
   def create
     user = User.find_by(email: login_params[:email])
     if user && user.authenticate(login_params[:password])
-      jwt = Auth.issue({user: user.id})
       response = {
-        jwt: jwt,
         id: user.id,
         email: user.email,
         name: user.name
